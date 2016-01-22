@@ -27,6 +27,7 @@ Future<String> gitUserEmail() => gitConfig('user.email');
 Future<String> gitRepoHomepage() => gitConfig('remote.origin.url').then(repoUrlToHomepage);
 
 String repoUrlToHomepage(String repo) {
+  if (repo == '') return null;
   var uri = Uri.parse(repo);
   p.Context context = p.Style.url.context;
   // Remove '.git' suffix.
